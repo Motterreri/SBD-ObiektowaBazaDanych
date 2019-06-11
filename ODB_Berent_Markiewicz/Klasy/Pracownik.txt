@@ -1,0 +1,49 @@
+Class BUT.Pracownik Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, BUT.Osoba)
+{
+
+Property NrPracownika As %Integer [ Required ];
+
+Relationship Pracuje As BUT.Biuro [ Cardinality = one, Inverse = Zatrudnia ];
+
+Method PrzedstawSie() As %String
+{
+	Return "Nazywam siê: "_..Imie_" "_..Nazwisko_" i jestem pracownikiem o nr: "_..NrPracownika
+}
+
+Storage Default
+{
+<Data name="PracownikDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Imie</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="6">
+<Value>NrPracownika</Value>
+</Value>
+<Value name="7">
+<Value>Pracuje</Value>
+</Value>
+<Value name="8">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<DataLocation>^BUT.PracownikD</DataLocation>
+<DefaultData>PracownikDefaultData</DefaultData>
+<IdLocation>^BUT.PracownikD</IdLocation>
+<IndexLocation>^BUT.PracownikI</IndexLocation>
+<StreamLocation>^BUT.PracownikS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

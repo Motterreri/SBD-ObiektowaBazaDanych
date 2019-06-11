@@ -1,0 +1,89 @@
+Class BUT.Klient Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, BUT.Osoba)
+{
+
+Property Pesel As %Integer [ Required ];
+
+Relationship Rezerwuje As BUT.Wycieczka [ Cardinality = one, Inverse = JestRezerwowana ];
+
+Method PowiedzGdzieJestes() As %String
+{
+	Return "Ulica: " _..Ulica_" Miasto: "_..Miasto_" Kod Pocztowy: "_..KodPocztowy
+}
+
+Storage Default
+{
+<Data name="KlientDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Imie</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="6">
+<Value>Pesel</Value>
+</Value>
+<Value name="7">
+<Value>Rezerwuje</Value>
+</Value>
+<Value name="8">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<DataLocation>^BUT.KlientD</DataLocation>
+<DefaultData>KlientDefaultData</DefaultData>
+<ExtentSize>20</ExtentSize>
+<IdLocation>^BUT.KlientD</IdLocation>
+<IndexLocation>^BUT.KlientI</IndexLocation>
+<Property name="%%CLASSNAME">
+<AverageFieldSize>1</AverageFieldSize>
+<Selectivity>100.0000%</Selectivity>
+</Property>
+<Property name="%%ID">
+<AverageFieldSize>1.55</AverageFieldSize>
+<Selectivity>1</Selectivity>
+</Property>
+<Property name="Imie">
+<AverageFieldSize>5</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<Property name="KodPocztowy">
+<AverageFieldSize>5</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<Property name="Miasto">
+<AverageFieldSize>4.95</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<Property name="Nazwisko">
+<AverageFieldSize>4.8</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<Property name="Pesel">
+<AverageFieldSize>8.9</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<Property name="Rezerwuje">
+<AverageFieldSize>1</AverageFieldSize>
+<Selectivity>100.0000%</Selectivity>
+</Property>
+<Property name="Ulica">
+<AverageFieldSize>4.7</AverageFieldSize>
+<Selectivity>5.0000%</Selectivity>
+</Property>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<StreamLocation>^BUT.KlientS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

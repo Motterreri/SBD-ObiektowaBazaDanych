@@ -1,0 +1,50 @@
+Class BUT.Wycieczka Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor)
+{
+
+Property Kraj As %String [ Required ];
+
+Property Hotel As %String [ Required ];
+
+Property CenaZaOsobe As Cena [ Required ];
+
+Property Rabat As %Integer;
+
+Relationship JestRezerwowana As BUT.Klient [ Cardinality = many, Inverse = Rezerwuje ];
+
+Method PokazCenePoRabacie() As %Integer
+{
+	Set P = ..CenaZaOsobe.CenaPodstawowa - ..Rabat
+	Return "Cena przed rabatem: "_CenaZaOsobe + " | Cena po rabacie: "_P
+}
+
+Storage Default
+{
+<Data name="WycieczkaDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>WycieczkaId</Value>
+</Value>
+<Value name="3">
+<Value>Kraj</Value>
+</Value>
+<Value name="4">
+<Value>Hotel</Value>
+</Value>
+<Value name="5">
+<Value>CenaZaOsobe</Value>
+</Value>
+<Value name="6">
+<Value>Rabat</Value>
+</Value>
+</Data>
+<DataLocation>^BUT.WycieczkaD</DataLocation>
+<DefaultData>WycieczkaDefaultData</DefaultData>
+<IdLocation>^BUT.WycieczkaD</IdLocation>
+<IndexLocation>^BUT.WycieczkaI</IndexLocation>
+<StreamLocation>^BUT.WycieczkaS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

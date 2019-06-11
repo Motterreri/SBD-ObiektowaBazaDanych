@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2016.2.1 (Build 803U_SU)" ts="2019-06-11 22:16:30">
+<Class name="BUT.Adres">
+<Abstract>1</Abstract>
+<Super>%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65175,53349.881435</TimeChanged>
+<TimeCreated>65175,53340.301068</TimeCreated>
+
+<Property name="Ulica">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Miasto">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="KodPocztowy">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Method name="PowiedzGdzieJestes">
+<ReturnType>%String</ReturnType>
+</Method>
+</Class>
+
+
+<Class name="BUT.Biuro">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,BUT.Adres</Super>
+<TimeChanged>65175,72991.379934</TimeChanged>
+<TimeCreated>65175,53340.388778</TimeCreated>
+
+<Property name="NrBiura">
+<Type>%Integer</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Zatrudnia">
+<Type>BUT.Pracownik</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Pracuje</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="PowiedzGdzieJestes">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Ulica: " _..Ulica_" Miasto: "_..Miasto_" Kod Pocztowy: "_..KodPocztowy
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^BUT.BiuroD</DataLocation>
+<DefaultData>BiuroDefaultData</DefaultData>
+<IdLocation>^BUT.BiuroD</IdLocation>
+<IndexLocation>^BUT.BiuroI</IndexLocation>
+<StreamLocation>^BUT.BiuroS</StreamLocation>
+<Data name="BiuroDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NrBiura</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Ulica</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="BUT.Cena">
+<Super>%SerialObject,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65175,65712.734649</TimeChanged>
+<TimeCreated>65175,53340.696642</TimeCreated>
+
+<Property name="CenaPodstawowa">
+<Type>%Integer</Type>
+<Required>1</Required>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheSerialState</Type>
+<State>CenaState</State>
+<StreamLocation>^BUT.CenaS</StreamLocation>
+<Data name="CenaState">
+<Value name="1">
+<Value>CenaZaOsobe</Value>
+</Value>
+<Value name="2">
+<Value>CenaPodstawowa</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="BUT.Klient">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,BUT.Osoba</Super>
+<TimeChanged>65175,63389.899869</TimeChanged>
+<TimeCreated>65175,53340.781875</TimeCreated>
+
+<Property name="Pesel">
+<Type>%Integer</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Rezerwuje">
+<Type>BUT.Wycieczka</Type>
+<Cardinality>one</Cardinality>
+<Inverse>JestRezerwowana</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="PowiedzGdzieJestes">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Ulica: " _..Ulica_" Miasto: "_..Miasto_" Kod Pocztowy: "_..KodPocztowy
+]]></Implementation>
+</Method>
+
+<Method name="PrzedstawSie">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Nazywam się: "_..Imie_" "_..Nazwisko_" i jestem klientem"
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^BUT.KlientD</DataLocation>
+<DefaultData>KlientDefaultData</DefaultData>
+<IdLocation>^BUT.KlientD</IdLocation>
+<IndexLocation>^BUT.KlientI</IndexLocation>
+<StreamLocation>^BUT.KlientS</StreamLocation>
+<ExtentSize>20</ExtentSize>
+<Data name="KlientDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Imie</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="6">
+<Value>Pesel</Value>
+</Value>
+<Value name="7">
+<Value>Rezerwuje</Value>
+</Value>
+<Value name="8">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<Property name="%%CLASSNAME">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="%%ID">
+<Selectivity>1</Selectivity>
+<AverageFieldSize>1.55</AverageFieldSize>
+</Property>
+<Property name="Imie">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>5</AverageFieldSize>
+</Property>
+<Property name="KodPocztowy">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>5</AverageFieldSize>
+</Property>
+<Property name="Miasto">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>4.95</AverageFieldSize>
+</Property>
+<Property name="Nazwisko">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>4.8</AverageFieldSize>
+</Property>
+<Property name="Pesel">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>8.9</AverageFieldSize>
+</Property>
+<Property name="Rezerwuje">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="Ulica">
+<Selectivity>5.0000%</Selectivity>
+<AverageFieldSize>4.7</AverageFieldSize>
+</Property>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+</Storage>
+</Class>
+
+
+<Class name="BUT.Osoba">
+<Abstract>1</Abstract>
+<Super>%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,BUT.Adres</Super>
+<TimeChanged>65175,53567.184862</TimeChanged>
+<TimeCreated>65175,53340.864715</TimeCreated>
+
+<Property name="Imie">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Nazwisko">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Method name="PrzedstawSie">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Nazywam się: "_..Imie_" "_..Nazwisko
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="BUT.Pracownik">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,BUT.Osoba</Super>
+<TimeChanged>65175,53778.888106</TimeChanged>
+<TimeCreated>65175,53340.946998</TimeCreated>
+
+<Property name="NrPracownika">
+<Type>%Integer</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Pracuje">
+<Type>BUT.Biuro</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Zatrudnia</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="PrzedstawSie">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Nazywam się: "_..Imie_" "_..Nazwisko_" i jestem pracownikiem o nr: "_..NrPracownika
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^BUT.PracownikD</DataLocation>
+<DefaultData>PracownikDefaultData</DefaultData>
+<IdLocation>^BUT.PracownikD</IdLocation>
+<IndexLocation>^BUT.PracownikI</IndexLocation>
+<StreamLocation>^BUT.PracownikS</StreamLocation>
+<Data name="PracownikDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Imie</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="6">
+<Value>NrPracownika</Value>
+</Value>
+<Value name="7">
+<Value>Pracuje</Value>
+</Value>
+<Value name="8">
+<Value>Ulica</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="BUT.Wycieczka">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65175,71509.111454</TimeChanged>
+<TimeCreated>65175,53341.029561</TimeCreated>
+
+<Property name="Kraj">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Hotel">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="CenaZaOsobe">
+<Type>Cena</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Rabat">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="JestRezerwowana">
+<Type>BUT.Klient</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Rezerwuje</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="PokazCenePoRabacie">
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+	Set P = ..CenaZaOsobe.CenaPodstawowa - ..Rabat
+	Return P
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^BUT.WycieczkaD</DataLocation>
+<DefaultData>WycieczkaDefaultData</DefaultData>
+<IdLocation>^BUT.WycieczkaD</IdLocation>
+<IndexLocation>^BUT.WycieczkaI</IndexLocation>
+<StreamLocation>^BUT.WycieczkaS</StreamLocation>
+<Data name="WycieczkaDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>WycieczkaId</Value>
+</Value>
+<Value name="3">
+<Value>Kraj</Value>
+</Value>
+<Value name="4">
+<Value>Hotel</Value>
+</Value>
+<Value name="5">
+<Value>CenaZaOsobe</Value>
+</Value>
+<Value name="6">
+<Value>Rabat</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+</Export>

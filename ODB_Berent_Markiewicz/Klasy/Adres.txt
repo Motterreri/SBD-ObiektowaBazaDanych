@@ -1,0 +1,14 @@
+Class BUT.Adres Extends (%Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor) [ Abstract ]
+{
+
+Property Ulica As %String [ Required ];
+
+Property Miasto As %String [ Required ];
+
+Property KodPocztowy As %String [ Required ];
+
+Method PowiedzGdzieJestes() As %String
+{
+}
+
+}

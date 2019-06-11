@@ -1,0 +1,40 @@
+W terminalu
+1) Przedstaw siê
+------------------------
+Po pierwsze dodaj t¹ metodê co jest poni¿ej do klasy klient bo zapomnia³em :D
+Method PrzedstawSie() As %String
+{
+	Return "Nazywam siê: "_..Imie_" "_..Nazwisko
+}
+---------------------------------------------------------------------
+set k = ##class(BUT.Klient).%OpenId(1)
+set p = k.PrzedstawSie()
+write p
+
+2) Powiedz gdzie jestes
+
+set p = k.PowiedzGdzieJestes
+write p
+
+
+3) Pokaz dane pracownika
+
+set b = ##class(BUT.Biuro).%OpenId(1)
+set p = ##class(BUT.Pracownik).%OpenId(1)
+set d = b.PokazDanePracownika(p.NrPracownika)
+write d
+
+4) Pokaz cene po rabacie
+set w = ##class(BUT.Wycieczka).%OpenId(1)
+set w.Rabat = 500
+set r = w.PokazCenePoRabacie()
+write r
+
+-----------------------------------------------------------
+
+Je¿eli nagrywa³byœ filmik to mo¿esz jeszcze wyœwietliæ w terminalu wszystkie tabelki
+
+Do $SYSTEM.SQL.Shell()
+
+select * FROM BUT.Klient 
+itd.

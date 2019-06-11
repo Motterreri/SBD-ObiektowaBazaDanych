@@ -1,0 +1,111 @@
+Set biuro1 = ##class(BUT.Biuro).%New()
+Set biuro1.NrBiura = 1
+Set biuro1.KodPocztowy = "06-300"
+Set biuro1.Miasto = "Przasnysz"
+Set biuro1.Ulica = "Wojskowa"
+--------------------------------------------
+
+Set wycieczka1 = ##class(BUT.Wycieczka).%New()
+Set wycieczka1.Kraj = "Polska"
+Set wycieczka1.Hotel = "Novotel"
+Set wycieczka1.CenaZaOsobe = ##class(BUT.Cena).%New()
+Set wycieczka1.CenaZaOsobe.CenaPodstawowa = 3000
+
+Set wycieczka2 = ##class(BUT.Wycieczka).%New()
+Set wycieczka2.Kraj = "Majorka"
+Set wycieczka2.Hotel = "Noname"
+Set wycieczka2.CenaZaOsobe = ##class(BUT.Cena).%New()
+Set wycieczka2.CenaZaOsobe.CenaPodstawowa = 5000
+
+Set wycieczka3 = ##class(BUT.Wycieczka).%New()
+Set wycieczka3.Kraj = "WolneMiastoRadom"
+Set wycieczka3.Hotel = "Brak"
+Set wycieczka3.CenaZaOsobe = ##class(BUT.Cena).%New()
+Set wycieczka3.CenaZaOsobe.CenaPodstawowa = 8000
+-------------------------------------
+Set osoba = ##class(BUT.Klient).%New()
+Set osoba.Pesel = 96052000051
+Set osoba.Imie = "Rafal"
+Set osoba.Nazwisko = "Berent"
+Set osoba.KodPocztowy = "06-300"
+Set osoba.Miasto = "Przasnysz"
+Set osoba.Ulica = "Wojskowa"
+Set osoba.Rezerwuje = wycieczka1
+Set sc = osoba.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set osoba1 = ##class(BUT.Klient).%New()
+Set osoba1.Pesel = 96052000052
+Set osoba1.Imie = "Ryszard"
+Set osoba1.Nazwisko = "Berent"
+Set osoba1.KodPocztowy = "06-321"
+Set osoba1.Miasto = "Lipa"
+Set osoba1.Ulica = "Brunatna"
+Set osoba1.Rezerwuje = wycieczka2
+Set sc = osoba1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set osoba2 = ##class(BUT.Klient).%New()
+Set osoba2.Pesel = 96052000053
+Set osoba2.Imie = "Marcin"
+Set osoba2.Nazwisko = "Rudy"
+Set osoba2.KodPocztowy = "06-333"
+Set osoba2.Miasto = "Lipno"
+Set osoba2.Ulica = "Gniada"
+Set osoba2.Rezerwuje = wycieczka3
+Set sc = osoba2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set osoba3 = ##class(BUT.Klient).%New()
+Set osoba3.Pesel = 96052000054
+Set osoba3.Imie = "Adam"
+Set osoba3.Nazwisko = "Miller"
+Set osoba3.KodPocztowy = "06-344"
+Set osoba3.Miasto = "Szczytno"
+Set osoba3.Ulica = "Krysta"
+Set osoba3.Rezerwuje = wycieczka3
+Set sc = osoba3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set osoba4 = ##class(BUT.Klient).%New()
+Set osoba4.Pesel = 96052000055
+Set osoba4.Imie = "Michal"
+Set osoba4.Nazwisko = "Wojski"
+Set osoba4.KodPocztowy = "04-214"
+Set osoba4.Miasto = "Gdynia"
+Set osoba4.Ulica = "Marciniaka"
+Set osoba4.Rezerwuje = wycieczka3
+Set sc = osoba4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+
+--------------------------------------------
+
+Set osoba5 = ##class(BUT.Pracownik).%New()
+Set osoba5.NrPracownika = 123
+Set osoba5.Imie = "Piotr"
+Set osoba5.Nazwisko = "Pracowity"
+Set osoba5.KodPocztowy = "04-111"
+Set osoba5.Miasto = "Gdansk"
+Set osoba5.Ulica = "Roztocze"
+Set osoba5.Pracuje = biuro1
+Set sc = osoba5.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set osoba6 = ##class(BUT.Pracownik).%New()
+Set osoba6.NrPracownika = 321
+Set osoba6.Imie = "Bob"
+Set osoba6.Nazwisko = "Budowczniczy"
+Set osoba6.KodPocztowy = "11-123"
+Set osoba6.Miasto = "Gdansk"
+Set osoba6.Ulica = "Gdzies"
+Set osoba6.Pracuje = biuro1
+Set sc = osoba6.%Save()
+do $system.OBJ.DisplayError(sc)
+
+----------------------------------------------
+
+
+

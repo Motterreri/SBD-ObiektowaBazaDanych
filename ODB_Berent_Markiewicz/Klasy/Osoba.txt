@@ -1,0 +1,13 @@
+Class BUT.Osoba Extends (%Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, BUT.Adres) [ Abstract ]
+{
+
+Property Imie As %String [ Required ];
+
+Property Nazwisko As %String [ Required ];
+
+Method PrzedstawSie() As %String
+{
+	Return "Nazywam siê: "_..Imie_" "_..Nazwisko
+}
+
+}

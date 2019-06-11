@@ -1,0 +1,40 @@
+Class BUT.Biuro Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, BUT.Adres)
+{
+
+Property NrBiura As %Integer [ Required ];
+
+Relationship Zatrudnia As BUT.Pracownik [ Cardinality = many, Inverse = Pracuje ];
+
+Method PowiedzGdzieJestes() As %String
+{
+	Return "Ulica: " _..Ulica_" Miasto: "_..Miasto_" Kod Pocztowy: "_..KodPocztowy
+}
+
+Storage Default
+{
+<Data name="BiuroDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NrBiura</Value>
+</Value>
+<Value name="3">
+<Value>Miasto</Value>
+</Value>
+<Value name="4">
+<Value>KodPocztowy</Value>
+</Value>
+<Value name="5">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<DataLocation>^BUT.BiuroD</DataLocation>
+<DefaultData>BiuroDefaultData</DefaultData>
+<IdLocation>^BUT.BiuroD</IdLocation>
+<IndexLocation>^BUT.BiuroI</IndexLocation>
+<StreamLocation>^BUT.BiuroS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
